@@ -3,7 +3,7 @@ import json
 import os
 from pprint import pprint
 
-openai.api_key = os.environ['API_KEY']
+openai.api_key = "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"
 
 number_of_dishes = 3
 number_of_ingredients = 5
