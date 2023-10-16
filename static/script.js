@@ -10,8 +10,6 @@ const waitingTime = 30000;
 let food_dict = {}
 // Event listeners
 searchBtn.addEventListener('click', searchActivated);
-
-console.log("JS working");
 recipeCloseBtn.addEventListener('click', () => {
     mealDetailsContent.parentElement.classList.remove('showRecipe');
 });
@@ -97,7 +95,6 @@ function searchActivated(){
                     modal.style.display = 'none';
                 }
             });
-    
     
             let recipe_buttons = document.querySelectorAll('.recipe-btn');
             loader.style.visibility = 'hidden';
