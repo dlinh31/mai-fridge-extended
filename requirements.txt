@@ -1,0 +1,6 @@
+tensorflow
+openai
+opencv-python
+numpy
+flask
+requests
