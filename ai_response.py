@@ -60,8 +60,7 @@ def get_dishes(ingredient_list):
     funcs = reply_content.to_dict()['function_call']['arguments']
     funcs = json.loads(funcs)
     dish_list = funcs['food_name']
-    # print(dish_list, '\n')
-    # return dish_list
+
     
     food_dict = {}
     for dish in dish_list:

@@ -8,6 +8,12 @@
   <link rel = "stylesheet" href = "../static/style.css">
 </head>
 <body>
+  <nav>
+    <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Popular Recipes</a></li>
+    </ul>
+</nav>
   
   <div class = "container">
     <div class = "meal-wrapper">
@@ -25,20 +31,30 @@
             <i class = "fas fa-search"></i>
           </button>
         </div>
+
+        <div>
+          <form class="upload-form" id="uploadForm" enctype="multipart/form-data">
+            <label onclick="displayUploadBtn()" for="photoInput" class="custom-file-input-label">
+                Choose a File
+            </label>
+            <span class="selected-file-name"></span>
+            <input type="file" name="photo" id="photoInput" class="file-input" accept="image/*" onchange="displayFileName()">
+            <button type="button" class="upload-button" onclick="uploadPhoto()">Upload</button>
+        </form>
+        <div id="result"></div>
+
+
+        </div>
         <div class="loader-container">
           <div class="loader"></div>
           
       </div>
       <p class="loader-text">mAI Fridge is looking for recipe...</p>
 
-
       </div>
-
       <div class = "meal-result">
         <h2 class = "title" id="display-result">Your Search Results:</h2>
-        <div id= "meal">
-
-        </div>
+        <div id= "meal"></div>
       </div>
 
 

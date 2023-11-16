@@ -8,22 +8,27 @@ const loaderText = document.querySelector(".loader-text");
 const waitingTime = 30000;
 
 let food_dict = {}
+let file_name = '';
+let ingredient_list = [];
 // Event listeners
 searchBtn.addEventListener('click', searchActivated);
 recipeCloseBtn.addEventListener('click', () => {
     mealDetailsContent.parentElement.classList.remove('showRecipe');
 });
 
+function showLoader(){
+    loader.style.visibility = 'visible';
+    loaderContainer.style.display = 'flex';
+    loaderText.style.visibility = 'visible';
+}
+
 // Get meal list that matches with the ingredients
 function searchActivated(){
-    function getMealListPromise(){
-        console.log("getMealListPromise activated");
+    function getMealListPromise(){ 
         return new Promise((resolve, reject) => {
             let searchInputTxt = document.getElementById('search-input').value.trim();
             //send user input to python backend
-            loader.style.visibility = 'visible';
-            loaderContainer.style.display = 'flex';
-            loaderText.style.visibility = 'visible';
+            showLoader();
     
             $.ajax({ 
                 url: '/process', 
@@ -51,7 +56,9 @@ function searchActivated(){
     
     };
     
-    getMealListPromise().then(() => {
+    getMealListPromise()
+    .catch((error) => {console.log(error)})
+    .then(() => {
         let html = "";
         console.log("first part of promise.then");
             
@@ -125,10 +132,88 @@ function searchActivated(){
             })});
     });
 };
+function displayFileName() {
+    const fileInput = document.getElementById('photoInput');
+    const fileNameSpan = document.querySelector('.selected-file-name');
+    fileNameSpan.textContent = fileInput.files[0] ? fileInput.files[0].name : '';
+}
 
 
+function uploadPhoto() {
+    var formData = new FormData(document.getElementById('uploadForm'));
 
+    fetch('/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('result').innerHTML = data.message;
+        file_name = data.filename;
 
+        sendPhoto(file_name);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    async function sendPhoto(filepath) {
+        let promise = new Promise((resolve, reject) => {
+
+            $.ajax({ 
+                url: '/detect', 
+                type: 'POST', 
+                data: JSON.stringify({'data': filepath}),
+                dataType: 'json',
+                contentType:'application/json',
+                // contentType: 'application/json',
+                success: function(response) { 
+                    console.log("ajax for filename successful");
     
+                }, 
+                error: function(error) {
+                    console.log("error"); 
+                    console.log(error); 
+                }
+                
+                })
+                .done(function(data) {
+                    console.log(data);
+                    resolve(data);
+            });
+        })
+        ingredient_list = await promise;
+        document.getElementById('result').innerHTML = "<h3 class='ingredient-identified-h3'>Ingredients identified in your Fridge: </h3>";
+        html = "<ul class='ingredient-ul'>";
+
+        
+        ingredient_list.forEach((ingredient, index) => {html += `<li>
+        <input type="checkbox" class="ingredient-checkbox" id="ingredient${index + 1}">
+        <label class="ingredient-label" for="ingredient${index + 1}">${ingredient}</label>
+        </li>`});
+        html += `<button class="action-button" onclick="getSelectedIngredients()">Get Selected Ingredients</button>`
+        document.getElementById('result').innerHTML += html;
+      }
+}
+
+function displayUploadBtn(){
+    setTimeout(()=>{
+        let uploadbtn = document.querySelector(".upload-button");
+    uploadbtn.style.visibility = 'visible';
+    }, 2000);
+    
+}
+
+function getSelectedIngredients() {
+    const checkboxes = document.querySelectorAll('.ingredient-ul input[type="checkbox"]:checked');
+    const selectedIngredients = Array.from(checkboxes).map(checkbox => checkbox.nextElementSibling.innerText);
+    let ingredients_string = selectedIngredients.join(', '); 
+    let searchTxt = document.querySelector('#search-input');
+    searchTxt.value = ingredients_string;
+    searchActivated();
+
+    console.log('Selected Ingredients:', selectedIngredients);
+    // You can further process or use the selected ingredients as needed
+}
 
 

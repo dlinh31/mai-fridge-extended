@@ -9,12 +9,16 @@
 :root{
     --tenne-tawny: #d65108;
     --tenne-tawny-dark: #b54507;
+    --light-brown: #c4836c;
+    --dark-brown: #ba8148;
+    --bg-color: #f9f6ee;
 }
 body{
     font-weight: 300;
     font-size: 1.05rem;
     line-height: 1.6;
     font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
 }
 
 /*  */
@@ -43,12 +47,14 @@ body{
 .meal-wrapper{
     max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem;
-    background: #fff;
+    /* padding: 1rem; */
+    background: var(--bg-color);
     text-align: center;
 }
 .meal-search{
     margin: 2rem 0;
+    margin-bottom: 0;
+    background-color: var(--bg-color);
 }
 .meal-search cite{
     font-size: 1rem;
@@ -67,19 +73,19 @@ body{
     font-size: 1.1rem;
     font-family: inherit;
     outline: 0;
-    border: 1px solid var(--tenne-tawny);
-    color: var(--tenne-tawny);
+    border: 1px solid var(--light-brown);
+    color: var(--light-brown);
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
 }
 .search-control::placeholder{
-    color: var(--tenne-tawny);
+    color: var(--light-brown);
 }
 .search-btn{
     width: 55px;
     height: 55px;
     font-size: 1.8rem;
-    background: var(--tenne-tawny);
+    background: var(--light-brown);
     color: #fff;
     border: none;
     border-top-right-radius: 2rem;
@@ -91,10 +97,11 @@ body{
     -o-transition: all 0.4s linear;
 }
 .search-btn:hover{
-    background: var(--tenne-tawny-dark);
+    background: var(--dark-brown);
 }
 .meal-result{
-    margin-top: 4rem;
+
+    background-color: var(--bg-color);
 }
 #meal{
     margin: 2.4rem 0;
@@ -123,7 +130,7 @@ body{
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    background: var(--tenne-tawny);
+    background: var(--light-brown);
     font-weight: 500;
     font-size: 1.1rem;
     padding: 0.75rem 0;
@@ -142,7 +149,7 @@ body{
     -o-transition: all 0.4s linear;
 }
 .recipe-btn:hover{
-    background: var(--tenne-tawny-dark);
+    background: var(--dark-brown);
 }
 
 /* meal details */
@@ -155,8 +162,8 @@ body{
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
-    color: #fff;
-    background: var(--tenne-tawny);
+    color: var(--bg-color);
+    background: var(--light-brown);
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
@@ -218,7 +225,7 @@ body{
 .recipe-category{
     background: #fff;
     font-weight: 600;
-    color: var(--tenne-tawny);
+    color: var(--light-brown);
     display: inline-block;
     padding: 0.2rem 0.5rem;
     border-radius: 0.3rem;
@@ -227,18 +234,7 @@ body{
     -ms-border-radius: 0.3rem;
     -o-border-radius: 0.3rem;
 }
-.recipe-category{
-    background: #fff;
-    font-weight: 600;
-    color: var(--tenne-tawny);
-    display: inline-block;
-    padding: 0.2rem 0.5rem;
-    border-radius: 0.3rem;
-    -webkit-border-radius: 0.3rem;
-    -moz-border-radius: 0.3rem;
-    -ms-border-radius: 0.3rem;
-    -o-border-radius: 0.3rem;
-}
+
 .recipe-instruct{
     padding: 1rem 0;
 }
@@ -274,7 +270,7 @@ body{
 /*  */
 .notFound{
     grid-template-columns: 1fr!important;
-    color: var(--tenne-tawny);
+    color: var(--dark-brown);
     font-size: 1.8rem;
     font-weight: 600;
     width: 100%;
@@ -346,12 +342,7 @@ body{
 }
 
 
-.ingredient-ul{
-    text-align: left;
-    padding-left: 0pt;
-    list-style-type: none;
-    list-style-position: outside;
-}
+
 
 a:link {
     color: #d65108;
@@ -395,4 +386,175 @@ a:visited {
 
 .loader-text{
     visibility: hidden;
+}
+
+
+/* Button Style */
+
+#uploadForm button {
+    border-radius: 30px;
+    background-color: #c4836c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#uploadForm button:hover {
+    background-color: #ba8148;
+    color: white;
+}
+
+/* Input Style */
+#photoInput {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Result Style */
+#result {
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+li {
+    margin: 5px; /* Adjust as needed */
+}
+
+
+.ingredient-identified-h3{
+    margin-bottom: 10px;
+}
+
+
+.ingredient-ul {
+    text-align: left;
+    padding-left: 0pt;
+    list-style-type: none;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+}
+
+.ingredient-item {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-checkbox {
+    margin-right: 10px;
+    accent-color: var(--dark-brown);
+}
+
+.ingredient-label {
+    flex: 1; /* Take up remaining space in the flex container */
+}
+
+.action-button {
+    border-radius: 30px;
+    background-color: #c4836c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/*File upload */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-file-input-label {
+    border-radius: 30px;
+    background-color: #c4836c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.selected-file-name {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.upload-button {
+    visibility: hidden; 
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+
+nav {
+    background-color: var(--bg-color); /* Use the color from your root variables */
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff; /* White color for the text */
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+nav ul li a:hover {
+    color: var(--dark-brown); /* Darker color on hover */
 }
