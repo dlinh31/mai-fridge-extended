@@ -426,7 +426,7 @@ a:visited {
 /* Result Style */
 #result {
     padding: 20px;
-    margin: 10px 0;
+
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -482,7 +482,7 @@ li {
     display: inline-block;
     font-size: 16px;
     font-weight: 300;
-    margin: 4px 2px;
+    margin: 10px 2px;
     cursor: pointer;
     transition-duration: 0.4s;
     font-family: 'Poppins', sans-serif;
@@ -512,7 +512,8 @@ li {
 }
 
 .selected-file-name {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding: 10px;
 }
 

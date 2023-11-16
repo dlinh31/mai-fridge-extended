@@ -191,7 +191,7 @@ function uploadPhoto() {
         <input type="checkbox" class="ingredient-checkbox" id="ingredient${index + 1}">
         <label class="ingredient-label" for="ingredient${index + 1}">${ingredient}</label>
         </li>`});
-        html += `<button class="action-button" onclick="getSelectedIngredients()">Get Selected Ingredients</button>`
+        html += `<button class="action-button" onclick="getSelectedIngredients()">Find recipe for selected ingredients</button>`
         document.getElementById('result').innerHTML += html;
       }
 }
