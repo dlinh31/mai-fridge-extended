@@ -63,10 +63,11 @@ function searchActivated(){
         console.log("first part of promise.then");
             
             for (const key in food_dict) {
+                console.log("Food dict key", food_dict[key]);
                 html += `
                 <div class="meal-item" id="${key}"">
                     <div class="meal-img">
-                        <img src="../static/images/sample_food.jpg" alt="food">
+                        <img src="${food_dict[key][food_dict[key].length - 1]}" width="256" height="256" alt="food">
                     </div>
                     <div class="meal-name">
                         <h3>${key}</h3>
@@ -120,13 +121,22 @@ function searchActivated(){
                 
                 
                 console.log(food_dict[mealName]);
-                food_dict[mealName].forEach((ingredient) => {
-                    
+
+                for (let i = 0; i < food_dict[mealName].length - 1; i ++){
                     modal_p.innerHTML += `
                     <li>
-                        <a target="_blank" href="https://www.walmart.com/search?q=${ingredient.replace(/\s/g, '')}">${ingredient}</a></li>`;
+                        <a target="_blank" href="https://www.walmart.com/search?q=${food_dict[mealName][i].replace(/\s/g, '')}">${food_dict[mealName][i]}</a></li>`;
+            
+                }
+
+
+                // food_dict[mealName].forEach((ingredient) => {
                     
-                });
+                //     modal_p.innerHTML += `
+                //     <li>
+                //         <a target="_blank" href="https://www.walmart.com/search?q=${ingredient.replace(/\s/g, '')}">${ingredient}</a></li>`;
+                    
+                // });
                 modal_p.innerHTML += "</ul>";
     
             })});

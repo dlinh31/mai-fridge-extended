@@ -1,8 +1,14 @@
 import openai
 import json
+import os
 from pprint import pprint
+import os
+from ai_images import get_images
 
-openai.api_key = "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"
+#replace with your OpenAI API key
+openai.api_key = os.getenv("OPENAI_API")
+openai.api_key = "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"
+
 
 number_of_dishes = 3
 number_of_ingredients = 5
@@ -15,7 +21,7 @@ def get_dishes(ingredient_list):
     
     example_user_input = f"How do I make a dish with the following ingredients in my fridge: {ingredient_list}"
     pre_prompt.append({"role": "user", "content": f"{example_user_input}"})
-    print(example_user_input)
+
 
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -66,7 +72,12 @@ def get_dishes(ingredient_list):
         dish_name = dish[0]
         ingredient_list = dish[1:len(dish)]
         food_dict[dish_name] = ingredient_list
+        
+    image_urls = get_images(food_dict)
+    for food, ingredients in food_dict.items():
+        ingredients.append(image_urls[food])
     
     return food_dict
 
 
+# print(get_dishes("Egg, potatoes, tomatoes, milk"))

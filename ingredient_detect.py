@@ -7,6 +7,7 @@ import ssl
 # Disable SSL certificate verification (use with caution)
 ssl._create_default_https_context = ssl._create_unverified_context
 
+
 # Load the pre-trained InceptionV3 model
 
 
