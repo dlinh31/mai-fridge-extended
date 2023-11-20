@@ -5,9 +5,11 @@ from pprint import pprint
 import os
 from ai_images import get_images
 
+
+
 #replace with your OpenAI API key
 openai.api_key = os.getenv("OPENAI_API")
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 number_of_dishes = 3

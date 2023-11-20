@@ -1,7 +1,7 @@
 import os
 import openai  # pip install openai==0.28.1 for it to work
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 def get_images(food_dict):
@@ -14,7 +14,7 @@ def get_images(food_dict):
 
     list_length = len(food_list)
     url_list = []
-    default = " , Editorial Photography, Photography, Shot on 70mm lens, Depth of Field, Bokeh, DOF, Tilt Blur, Shutter Speed 1/1000, F/22, White Balance, 32k, Super-Resolution, white background"
+    default = " The food, White Background, No Words in Image, Single Object in Image, Object in focus, Object in center of photo, Product Photography, Photography, Shot on 70mm lens, Depth of Field, white background, natural lighting, Bokeh, drop shadow, Shutter Speed 1/500, F/8, White Balance, 32k, Super-Resolution"
 
 
     while count<list_length:

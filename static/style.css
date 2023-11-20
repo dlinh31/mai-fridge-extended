@@ -53,6 +53,7 @@ body{
 }
 .meal-search{
     margin: 2rem 0;
+    margin-top: 1.5rem;
     margin-bottom: 0;
     background-color: var(--bg-color);
 }
@@ -119,6 +120,7 @@ body{
 .meal-img img{
     width: 100%;
     display: block;
+    object-fit: cover;
 }
 .meal-name{
     padding: 1.5rem 0.5rem;
@@ -131,7 +133,7 @@ body{
     font-family: 'Poppins', sans-serif;
     color: #fff;
     background: var(--light-brown);
-    font-weight: 500;
+    font-weight: 350;
     font-size: 1.1rem;
     padding: 0.75rem 0;
     display: block;
@@ -147,6 +149,7 @@ body{
     -moz-transition: all 0.4s linear;
     -ms-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
+
 }
 .recipe-btn:hover{
     background: var(--dark-brown);
@@ -321,6 +324,7 @@ body{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
+    overflow-y: auto;
 }
 
 .modal-content {
@@ -331,6 +335,18 @@ body{
     width: 60%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     position: relative;
+    overflow-y: auto;
+}
+
+.modal-content p p {
+    margin-left: 20px; /* Adjust the left margin for nested paragraphs */
+    text-align: left; /* Aligns nested paragraphs to the left */
+}
+
+.modal-content p li {
+    margin-left: 350px;
+    text-align: left; /* Adjust the left margin for nested paragraphs */
+    /* Aligns nested paragraphs to the left */
 }
 
 .close {
@@ -377,6 +393,10 @@ a:visited {
     animation: spin 2s linear infinite;
     visibility: hidden;
 }
+
+.loader-text{
+    visibility: hidden;
+}
   
 @keyframes spin {
 0% { transform: rotate(0deg); }
@@ -384,9 +404,36 @@ a:visited {
 }
 
 
-.loader-text{
-    visibility: hidden;
+.loading-message {
+    display: none;
+    font-size: 18px;
+    margin-top: 10px; /* Add some margin to separate from the button */
+    position: relative; /* Position relative for absolute positioning of dots */
 }
+
+/* Styling for the animated dots */
+/* Styling for the animated dots */
+.dots {
+    display: inline-block;
+    overflow: hidden;
+    width: 1em;
+    animation: dots 1.5s steps(3, end) infinite;
+    position: relative; /* Keep it relative for positioning */
+}
+
+@keyframes dots {
+    0%, 100% {
+        content: '\00a0'; /* Use '\00a0' to insert a non-breaking space */
+    }
+    33% {
+        content: '.\00a0';
+    }
+    66% {
+        content: '..\00a0';
+    }
+}
+
+
 
 
 /* Button Style */
@@ -534,7 +581,7 @@ li {
 
 nav {
     background-color: var(--bg-color); /* Use the color from your root variables */
-    padding: 1rem;
+    margin-top: 1rem;
     text-align: center;
 }
 

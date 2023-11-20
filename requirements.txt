@@ -1,6 +1,9 @@
 tensorflow
-openai
+openai==0.28
 opencv-python
 numpy
 flask
 requests
+semantic_kernel
+pillow
+

@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 from ai_response import get_dishes
 from ingredient_detect import detect
-
+from recipe_generate import getAIRecipe
 
 
 food_dict = {}
 file_path = ''
+recipes = ''
 
 app = Flask(__name__)
 @app.route("/")
@@ -20,10 +21,10 @@ def start():
 def process(): 
     global food_dict
     data = request.get_json()['data'] # retrieve the data sent from JavaScript 
-    print(data)
+    # print(data)
     # process the data using Python code 
     food_dict = get_dishes(data)
-    print (food_dict)
+    # print (food_dict)
     return jsonify(result=food_dict)
 
 
@@ -50,12 +51,17 @@ def activate_detect():
     filepath = request.get_json()['data'].split("\\")[-1]
     
     # Process data and generate a string response
-    print(filepath)
 
     result = detect(filepath=filepath)
     
     return result
 
+@app.route('/generateRecipes', methods=['POST'])
+def get_recipes():
+    meal_name = request.get_json()['mealname']
+    ingredient_list = request.get_json()['ingredient_list']
+    recipe = getAIRecipe(mealname=meal_name, ingredient_list=ingredient_list)
+    return jsonify({'recipe': recipe})
 
 if __name__ == "__main__":
     app.run(debug=True)

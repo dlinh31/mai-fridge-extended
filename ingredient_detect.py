@@ -40,13 +40,13 @@ def detect(filepath='sample_food.jpg'):
     results = predict_image(image_path)
 
     # Print the top predictions
-    for class_name, probability in results:
-        print(f"Class: {class_name}, Probability: {probability:.4f}")
+    # for class_name, probability in results:
+    #     print(f"Class: {class_name}, Probability: {probability:.4f}")
     
-    print(results)
+    # print(results)
     ingredient_list = [i[0] for i in results]
-    print(ingredient_list)
+    # print(ingredient_list)
     
     return ingredient_list
         
-        
+
